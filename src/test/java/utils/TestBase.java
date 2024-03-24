@@ -15,5 +15,4 @@ public class TestBase {
 		}
 		return driver;
 	}
-
 }

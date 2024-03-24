@@ -19,7 +19,7 @@ public class GenericUtils {
 		driver.findElement(By.linkText("Top Deals")).click();
 		Set<String> handles = driver.getWindowHandles();
         Iterator<String> i1 = handles.iterator();
-        /*String parentWindow = */ i1.next();
+        i1.next();
         String childWindow = i1.next();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.switchTo().window(childWindow);
