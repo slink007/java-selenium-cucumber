@@ -28,6 +28,14 @@
 			<artifactId>cucumber-testng</artifactId>
 			<version>7.16.1</version>
 		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.18.1</version>
+		</dependency>
+
 		<!--https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
