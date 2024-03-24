@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import io.cucumber.java.en.Then;
+import pageObjects.OfferPage;
 import utils.TestContextSetup;
 
 public class OfferPageStepDefinition {
@@ -23,8 +24,9 @@ public class OfferPageStepDefinition {
     @Then("user searched for same short name {string} on offers page to check if product exists")
 	public void user_searched_for_same_short_name_on_offers_page_to_check_if_product_exists(String shortName) throws InterruptedException {
     	switchToOffersPage();
-        testContextSetup.driver.findElement(By.xpath("//input[@type='search']")).sendKeys(shortName);
-        String offerPageProductName = testContextSetup.driver.findElement(By.cssSelector("tr td:nth-child(1)")).getText();
+    	OfferPage op = new OfferPage(testContextSetup.driver);
+    	op.searchItem(shortName);
+    	String offerPageProductName = op.getProductName();
         Assert.assertEquals(offerPageProductName, testContextSetup.landingPageProductName);
 	}
     
