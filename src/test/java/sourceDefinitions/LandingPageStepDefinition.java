@@ -3,6 +3,7 @@ package sourceDefinitions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -23,6 +24,8 @@ public class LandingPageStepDefinition {
 //		testContextSetup.driver = new FirefoxDriver();
 //		testContextSetup.driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 //		testContextSetup.driver.manage().window().maximize();
+		String currentURL = testContextSetup.testBase.WebDriverManager().getCurrentUrl(); 
+		Assert.assertEquals(currentURL, "https://rahulshettyacademy.com/seleniumPractise/#/");
 	}
 	
 	@When("user searched with short name {string} and extracted actual product name")
