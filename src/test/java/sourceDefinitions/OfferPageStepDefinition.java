@@ -24,22 +24,17 @@ public class OfferPageStepDefinition {
     @Then("user searched for same short name {string} on offers page to check if product exists")
 	public void user_searched_for_same_short_name_on_offers_page_to_check_if_product_exists(String shortName) throws InterruptedException {
     	switchToOffersPage();
-    	OfferPage op = new OfferPage(testContextSetup.driver);
+    	// OfferPage op = new OfferPage(testContextSetup.driver);
+    	OfferPage op = testContextSetup.pageObjectManager.getOfferPage();
     	op.searchItem(shortName);
     	String offerPageProductName = op.getProductName();
         Assert.assertEquals(offerPageProductName, testContextSetup.landingPageProductName);
 	}
     
     public void switchToOffersPage() {
-    	if(!testContextSetup.driver.getCurrentUrl().
-    			equalsIgnoreCase("https://rahulshettyacademy.com/seleniumPractise/#/offers")) {
-    		testContextSetup.driver.findElement(By.linkText("Top Deals")).click();
-            Set<String> handles = testContextSetup.driver.getWindowHandles();
-            Iterator<String> i1 = handles.iterator();
-            /*String parentWindow = */ i1.next();
-            String childWindow = i1.next();
-            testContextSetup.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-            testContextSetup.driver.switchTo().window(childWindow);
+    	if(!testContextSetup.testBase.WebDriverManager().
+    			getCurrentUrl().equalsIgnoreCase("https://rahulshettyacademy.com/seleniumPractise/#/offers")) {
+    		testContextSetup.genericUtils.SwitchWindowToChild();
     	}
     }
 }
