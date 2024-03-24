@@ -34,7 +34,7 @@ public class OfferPageStepDefinition {
     		testContextSetup.driver.findElement(By.linkText("Top Deals")).click();
             Set<String> handles = testContextSetup.driver.getWindowHandles();
             Iterator<String> i1 = handles.iterator();
-            String parentWindow = i1.next();
+            /*String parentWindow = */ i1.next();
             String childWindow = i1.next();
             testContextSetup.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
             testContextSetup.driver.switchTo().window(childWindow);
