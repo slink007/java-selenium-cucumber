@@ -21,8 +21,9 @@ public class LandingPageStepDefinition {
 	
 	@Given("user is on GreenKart landing page")
 	public void user_is_on_green_kart_landing_page() throws IOException {
-		String currentURL = testContextSetup.testBase.WebDriverManager().getCurrentUrl(); 
-		Assert.assertEquals(currentURL, "https://rahulshettyacademy.com/seleniumPractise/#/");
+		String currentURL = testContextSetup.testBase.WebDriverManager().getCurrentUrl();
+		String expectedURL = testContextSetup.testBase.url;
+		Assert.assertEquals(currentURL, expectedURL);
 	}
 	
 	@When("user searched with short name {string} and extracted actual product name")
