@@ -1,5 +1,7 @@
 package sourceDefinitions;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -13,12 +15,12 @@ public class LandingPageStepDefinition {
 	public WebDriver driver;
 	TestContextSetup testContextSetup;
     
-    public LandingPageStepDefinition(TestContextSetup testContextSetup) {
+    public LandingPageStepDefinition(TestContextSetup testContextSetup) throws IOException {
         this.testContextSetup = testContextSetup;
     }
 	
 	@Given("user is on GreenKart landing page")
-	public void user_is_on_green_kart_landing_page() {
+	public void user_is_on_green_kart_landing_page() throws IOException {
 		String currentURL = testContextSetup.testBase.WebDriverManager().getCurrentUrl(); 
 		Assert.assertEquals(currentURL, "https://rahulshettyacademy.com/seleniumPractise/#/");
 	}
