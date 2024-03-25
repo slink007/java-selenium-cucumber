@@ -26,7 +26,7 @@ public class LandingPageStepDefinition {
 		Assert.assertEquals(currentURL, expectedURL);
 	}
 	
-	@When("user searched with short name {string} and extracted actual product name")
+	@When("^user searched with short name (.+) and extracted actual product name$")
 	public void user_searched_with_short_name_and_extracted_actual_product_name(String shortName) throws InterruptedException {
 		LandingPage lp = testContextSetup.pageObjectManager.getLandingPage();
 		lp.searchItem(shortName);
