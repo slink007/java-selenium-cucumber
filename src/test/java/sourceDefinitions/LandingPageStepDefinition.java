@@ -14,9 +14,11 @@ public class LandingPageStepDefinition {
 	
 	public WebDriver driver;
 	TestContextSetup testContextSetup;
+	LandingPage lp;
     
     public LandingPageStepDefinition(TestContextSetup testContextSetup) throws IOException {
         this.testContextSetup = testContextSetup;
+        this.lp = testContextSetup.pageObjectManager.getLandingPage();
     }
 	
 	@Given("user is on GreenKart landing page")
@@ -28,9 +30,15 @@ public class LandingPageStepDefinition {
 	
 	@When("^user searched with short name (.+) and extracted actual product name$")
 	public void user_searched_with_short_name_and_extracted_actual_product_name(String shortName) throws InterruptedException {
-		LandingPage lp = testContextSetup.pageObjectManager.getLandingPage();
+		//LandingPage lp = testContextSetup.pageObjectManager.getLandingPage();
 		lp.searchItem(shortName);
         Thread.sleep(2000);
         testContextSetup.landingPageProductName = lp.getProductName();
+	}
+	
+	@When("Added {string} items of the selected product to cart")
+	public void added_items_product(String quantity) {
+		lp.incrementQuantity(Integer.parseInt(quantity));
+		lp.addToCart();
 	}
 }

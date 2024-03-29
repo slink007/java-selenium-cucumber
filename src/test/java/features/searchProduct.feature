@@ -1,5 +1,6 @@
 Feature: search and place the order for products
 
+@OffersPage
 Scenario Outline: search experience should be same for both home and offers page
 
 Given user is on GreenKart landing page
