@@ -30,15 +30,14 @@ public class LandingPageStepDefinition {
 	
 	@When("^user searched with short name (.+) and extracted actual product name$")
 	public void user_searched_with_short_name_and_extracted_actual_product_name(String shortName) throws InterruptedException {
-		//LandingPage lp = testContextSetup.pageObjectManager.getLandingPage();
 		lp.searchItem(shortName);
         Thread.sleep(2000);
         testContextSetup.landingPageProductName = lp.getProductName();
 	}
 	
-	@When("Added {string} items of the selected product to cart")
-	public void added_items_product(String quantity) {
-		lp.incrementQuantity(Integer.parseInt(quantity));
+	@When("^Added (.+) items of the selected product to cart$")
+	public void added_items_product(int quantity) {
+		lp.incrementQuantity(quantity);
 		lp.addToCart();
 	}
 }
